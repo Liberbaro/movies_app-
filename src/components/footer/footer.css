@@ -1,0 +1,29 @@
+.pages{
+    width: 22.21782112121582px;
+    left: 30.297027587890625px;
+    margin: 5px 22px 14px 22px;
+}
+.selected{
+    background-color: #1890FF;
+    border-radius: 4px;
+    height: 22px;
+    color: #FFFFFF;
+ }
+.arrow {
+    content: '';
+    background-image: url("../../img/Shape.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    /*background-color: red;*/
+    position: relative;
+    bottom: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+.prev::before{
+
+}
+.next{
+    transform: rotate(180deg);
+
+}

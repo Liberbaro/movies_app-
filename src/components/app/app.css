@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'Inter';
+    src: url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+    font-weight: normal;
+    font-style: normal;
+
+}
+* {
+    box-sizing: border-box;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+#root{
+    background-color: #E5E5E5;
+}
+
+body {
+    font: 14px 'Inter', Arial, sans-serif;
+}
+
+
+
+button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 100%;
+    vertical-align: baseline;
+    font-family: inherit;
+    font-weight: inherit;
+    color: inherit;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+button::-moz-focus-inner {
+    border: none;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.moviesapp{
+    width: 1010px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+}
+
+:focus {
+    outline: 0;
+}
+
+.hidden {
+    display: none;
+}
