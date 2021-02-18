@@ -1,46 +1,38 @@
-/* eslint-disable quotes */
 export default class Serv {
   constructor() {
-    this.Url = `https://api.themoviedb.org/3/`;
-    this.Key = `api_key=5908be7961cd99390b32d8964c4435e7`;
+    this.url = 'https://api.themoviedb.org/3/';
+    this.apiKey = 'api_key=5908be7961cd99390b32d8964c4435e7';
+    this.itemKey = 1;
   }
 
   async getResp(url) {
-    const res = await fetch(url);
+    const res = await fetch(url),
+          result = await res.json();
     if (!res.ok) {
       throw new Error(`Can't ${url} because ${res.status}`);
     }
-    // eslint-disable-next-line one-var
-    const result = await res.json();
     return result;
   }
 
-  async postResp(url, rating) {
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json;charset=utf-8' },
-      body: JSON.stringify({ value: rating }),
-    });
-          // result = await res.json();
-    if (!res.ok) {
-      throw new Error('Can\'t find movie');
-    }
-    // eslint-disable-next-line one-var
-    const result = await res.json();
-    return result;
-  }
-
-  async test() {
+  async getMoviesList(filmName, page) {
     const movies = await this.getResp(
-      `${this.Url}search/movie?${this.Key}&language=en-US&query="return"&page=${1}&include_adult=false`,
+      `${this.url}search/movie?${this.apiKey}&language=en-US&query=${filmName}&page=${page}&include_adult=false`,
     );
     return movies.results;
   }
 
-  async testBody() {
-    const res = await this.test().then((wow) => console.log(wow.results));
-    return res;
+  getDataFilm(filmName) {
+    return this.getMoviesList(filmName, 1).then((res) => res.map((el) => {
+      const newEl = {
+        overview: el.overview,
+        releaseDate: el.release_date,
+        raiting: el.vote_average,
+        title: el.title,
+        poster: el.poster_path,
+        genre: el.genre_ids,
+        key: this.itemKey++,
+      };
+      return newEl;
+    }));
   }
 }
-
-// eslint-disable-next-line no-unused-vars

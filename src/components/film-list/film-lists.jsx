@@ -4,12 +4,12 @@ import React from 'react';
 import './film-lists.css';
 import FilmInfo from '../film-info/film-info';
 
-const FilmList = ({ movieList }) => {
-  let key = 2;
-  const movie = movieList.map((item) => {
+const FilmList = ({ filmsList }) => {
+  let key = 1;
+  const movie = filmsList.map((film) => {
     return (
       <li key={key++} className="film-list__item">
-        <FilmInfo film={item} />
+        <FilmInfo film={film} />
       </li>
     );
   });

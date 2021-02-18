@@ -25,7 +25,7 @@ export default class Footer extends Component {
               return <button key={el.num} type="button" className={`pages ${selected}`}>{el.num}</button>;
             });
       return (
-        <div>
+        <div className="movie-pages">
           <button type="button" className="arrow prev"/>
           {buttons}
           <button type="button" className="arrow next"/>
