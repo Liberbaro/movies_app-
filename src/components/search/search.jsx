@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-import './search.css';
+import PropTypes from 'prop-types';
+import './search.scss';
 
 export default class Search extends Component {
+    static propTypes = { onChangeSearch: PropTypes.func.isRequired }
+
     state = { value: '' }
 
     onChangeInputHandler = (evt) => {
-      const value = evt.target;
+      const { value } = evt.target,
+            { onChangeSearch } = this.props;
       this.setState({ value });
-      if (evt.keyCode === 13) console.log(value);
+      onChangeSearch(value);
     }
 
     render() {
@@ -17,7 +20,7 @@ export default class Search extends Component {
         <input
           type="text"
           placeholder="Type to search..."
-          className="search"
+          className="movies-app__search search"
           maxLength="100"
           defaultValue={value}
           onChange={this.onChangeInputHandler}
