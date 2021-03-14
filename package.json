@@ -55,7 +55,8 @@
     "husky": "^5.0.9",
     "lint-staged": "^10.5.4",
     "lodash": "^4.17.20",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "url-loader": "^4.1.1"
   },
   "husky": {
     "hooks": {
