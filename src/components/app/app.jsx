@@ -113,7 +113,7 @@ export default class App extends Component {
       const { guestSessionID } = this.state,
             { key } = film;
       this.moviesApi.postRateFilm(key, guestSessionID, rating)
-        .then(() => this.saveRatedFilm(film, rating)).cath(this.onError);
+        .then(() => this.saveRatedFilm(film, rating)).catch(this.onError);
     }
 
     onChangePage = (page) => {
