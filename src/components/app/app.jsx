@@ -105,6 +105,7 @@ export default class App extends Component {
             newRatedFilms = { ...ratedFilms };
       if (newRatedFilms[film.key]) newRatedFilms[film.key].rating = rating;
       else newRatedFilms[film.key] = { rating, ...film };
+      if (rating === 1) delete newRatedFilms[film.key];
       this.setState({ ratedFilms: newRatedFilms });
     }
 
@@ -112,7 +113,7 @@ export default class App extends Component {
       const { guestSessionID } = this.state,
             { key } = film;
       this.moviesApi.postRateFilm(key, guestSessionID, rating)
-        .then(() => this.saveRatedFilm(film, rating));
+        .then(() => this.saveRatedFilm(film, rating)).cath(this.onError);
     }
 
     onChangePage = (page) => {
