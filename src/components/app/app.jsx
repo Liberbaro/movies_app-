@@ -109,6 +109,7 @@ export default class App extends Component {
     }
 
     rateFilm = (film, rating) => {
+      if (rating === 1) return;
       const { guestSessionID } = this.state,
             { key } = film;
       this.moviesApi.postRateFilm(key, guestSessionID, rating)
