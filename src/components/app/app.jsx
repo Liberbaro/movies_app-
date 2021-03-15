@@ -109,11 +109,11 @@ export default class App extends Component {
     }
 
     rateFilm = (film, rating) => {
-      if (rating === 1) return;
+      if (rating === 0) return;
       const { guestSessionID } = this.state,
             { key } = film;
       this.moviesApi.postRateFilm(key, guestSessionID, rating)
-        .then(() => this.saveRatedFilm(film, rating)).catch(this.onError);
+        .then(() => this.saveRatedFilm(film, rating));
     }
 
     onChangePage = (page) => {
