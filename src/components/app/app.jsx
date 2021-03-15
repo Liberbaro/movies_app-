@@ -166,7 +166,7 @@ export default class App extends Component {
             } = this.state,
             { TabPane } = Tabs,
             isNotFound = !hasFilms && isLoaded && query !== '' && !hasError,
-            isListFull = (hasFilms || hasRated) && isLoaded && !hasError,
+            isListFull = hasFilms && isLoaded && !hasError,
             errorMessage = hasError && <Alert message="Error"
               description="Sorry, we can't find the movie data. Try a different query."
               type="error" showIcon closable />,
