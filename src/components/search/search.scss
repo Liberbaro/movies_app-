@@ -28,7 +28,7 @@
 }
 
 
-@media screen and (map-get($screen, "mobile")){
+@media screen and (max-width: map-get($screen, "mobile")){
     .search{
         width: 388px;
     }
