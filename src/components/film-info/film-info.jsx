@@ -52,7 +52,7 @@ export default class FilmInfo extends Component {
     if (arg === 0) return synopsis();
     this.setState(() => {
       if (document.documentElement.clientWidth > 520) return { synopsis: synopsis(210) };
-      return { synopsis: synopsis(258) };
+      return { synopsis: synopsis(248) };
     });
     return null;
   }
