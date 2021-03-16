@@ -70,6 +70,7 @@ export default class App extends Component {
     setNewGuestFilmsList = ({ guestFilmsList, ratedTotalPages }) => {
       const { ratedFilms } = this.state,
             newRatedFilmsList = this.compareRatings(guestFilmsList, ratedFilms);
+      console.log(guestFilmsList, ratedFilms);
       this.setState({
         guestFilmsList: newRatedFilmsList,
         ratedTotalPages,
@@ -108,9 +109,21 @@ export default class App extends Component {
       this.setState({ ratedFilms: newRatedFilms });
     }
 
+  delRated = (film) => {
+    const { ratedFilms } = this.state,
+          newRatedFilms = { ...ratedFilms };
+    delete newRatedFilms[film.key];
+    console.log(newRatedFilms);
+    this.setState({ ratedFilms: newRatedFilms });
+  }
+
     rateFilm = (film, rating) => {
       const { guestSessionID } = this.state,
             { key } = film;
+      if (rating === 0) {
+        this.delRated(film);
+        return;
+      }
       this.moviesApi.postRateFilm(key, guestSessionID, rating)
         .then(() => this.saveRatedFilm(film, rating));
     }
@@ -165,7 +178,7 @@ export default class App extends Component {
             } = this.state,
             { TabPane } = Tabs,
             isNotFound = !hasFilms && isLoaded && query !== '' && !hasError,
-            isListFull = (hasFilms || hasRated) && isLoaded && !hasError,
+            isListFull = hasFilms && isLoaded && !hasError,
             errorMessage = hasError && <Alert message="Error"
               description="Sorry, we can't find the movie data. Try a different query."
               type="error" showIcon closable />,

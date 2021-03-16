@@ -71,7 +71,7 @@ export default class FilmInfo extends Component {
       <SwapiConsumerGenres>
         {(genreList) => {
           return (
-            <article className="film-info">
+            <article className={this.hiddenFilm(rating)}>
               <div className="film-info__poster--swapper">
                 <img className="film-info__poster" src={poster}
                   alt={`Poster for the film ${title}`}/>
